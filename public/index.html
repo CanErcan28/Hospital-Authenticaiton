@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Client Data</title>
+</head>
+
+<body>
+    <h1>Please fill data in the form below:</h1>
+    <form method="POST" action="/post-feedback">
+        <label>Name:<input type="text" name="client-name" required></label>
+        <br>
+        <label>Surname:<input type="text" name="client-surname" required></label>
+        <br>
+        <label>Phone:<input type="text" name="client-phone" required></label>
+        <br>
+        <label>Weight:<input type="text" name="client-weight" required></label>
+        <br>
+        <label>Height:<input type="text" name="client-height" required></label>
+        <br>
+        <label>Gender:<input type="text" name="client-gender" required></label>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/view-feedbacks">View feedbacks</a>
+</body>
+
+</html>
