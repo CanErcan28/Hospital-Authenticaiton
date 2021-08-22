@@ -1,13 +1,13 @@
-//node js ile yazıldı .request işlemlerinin yapıldığı dosya
+//Written in NodeJS. The file where the requests are made.
 
-//gerekli toollar önceden indirildi ve import edildi
+//Required tools have already been downloaded and imported.
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
 
 
-//mongodb bağlantısı
+//mongodb connection
 var dbConn = mongodb.MongoClient.connect('mongodb://localhost:27017');
 
 var app = express();
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 
-//veriyi sisteme eklediğimiz yer
+//where we add the data to the system
 app.post('/post-feedback', function(req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
@@ -26,7 +26,7 @@ app.post('/post-feedback', function(req, res) {
 });
 
 
-//verileri okuduğumuz yer
+//where we read the data
 app.get('/view-feedbacks', function(req, res) {
     dbConn.then(function(db) {
         db.collection('feedbacks').find({}).toArray().then(function(feedbacks) {
